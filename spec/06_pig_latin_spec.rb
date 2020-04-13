@@ -63,5 +63,8 @@ describe "#translate" do
   it "Les : s'affichent avec le timer " do
     expect(translate("My stopwatch shows : 00:12:34")).to eq("My opwatchstay owsshay : 00:12:34")
   end
+  it "Ponctuation et majuscules à l'intérieur de la phrase" do
+    expect(translate("My brain is smoking, thanks to The Hacking Project!")).to eq("My ainbray isay okingsmay, anksthay otay Ethay Ackinghay Ojectpray!")
+  end
 
 end

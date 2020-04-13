@@ -7,14 +7,14 @@ def translate phrase
             mot = /(!|\?|\.|,)$/.match(mot).pre_match
         end
         if mot[0] =~ /[aeiou]/i
-            debut_voyelle(mot).insert(-1, str_ponctuation)
+            majuscule(debut_voyelle(mot)).insert(-1, str_ponctuation)
         else
             if mot =~ /^qu.*/i || mot =~ /^.qu.*/i
-                contient_qu(mot).insert(-1, str_ponctuation)
+                majuscule(contient_qu(mot)).insert(-1, str_ponctuation)
             elsif mot =~ /[aeiou]/i
-                debut_consonne(mot).insert(-1, str_ponctuation)
+                majuscule(debut_consonne(mot)).insert(-1, str_ponctuation)
             else
-                mot
+                majuscule(mot)
             end
         end
     end
@@ -39,6 +39,13 @@ def contient_qu mot
     $' + $& + "ay"
 end
 
+def majuscule mot
+    if mot =~ /[[:upper:]]/
+        mot = mot.capitalize
+    end
+    mot
+end
+
 p translate("apple")
 p translate("banana")
 p translate("cherry")
@@ -49,8 +56,9 @@ p translate("quiet")
 p translate("square")
 p translate("the quick brown fox")
 
-## MES TESTS
+# MES TESTS
 p translate("equalizer")
 p translate("My favorite hobby is coding")
 p translate("A tree, you have to plant! Ok?")
 p translate("My stopwatch shows : 00:12:34")
+p translate("My brain is smoking, thanks to The Hacking Project!")
