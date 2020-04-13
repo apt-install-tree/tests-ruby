@@ -55,13 +55,13 @@ describe "#translate" do
   it "Les majuscules se situent au début des mots" do
     expect(translate("A tree, you have to plant! Ok?")).to eq("Aay eetray, ouyay avehay otay antplay! Okay?")
   end
-  it "Les : s'affichent avec le timer " do
-    expect(translate("My stopwatch shows : 00:12:34")).to eq("My opwatchstay owsshay : 00:12:34")
-  end
 
   ## MES TESTS
   it "'qu' n'est pas tronqué quand il est précédé d'une voyelle" do
     expect(translate("equalizer")).to eq("equalizeray")
+  end
+  it "Les : s'affichent avec le timer " do
+    expect(translate("My stopwatch shows : 00:12:34")).to eq("My opwatchstay owsshay : 00:12:34")
   end
 
 end
